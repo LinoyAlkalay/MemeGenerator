@@ -2,6 +2,10 @@
 
 let gElCanvas
 let gCtx
+let gPos = {
+    x: 140,
+    y: 80
+}
 
 function initMeme(imgUrl) {
     document.querySelector('.main-gallery').style.display = 'none'
@@ -9,16 +13,16 @@ function initMeme(imgUrl) {
     drawImg(imgUrl)
 
     const elTxtInput = document.querySelector('[name="txt-input"]')
-    elTxtInput.addEventListener('keypress', addTextInput)
+    elTxtInput.addEventListener('keypress', () => {
+        setTimeout(addTextInput, 0)
+    })
 }
 
 // TODO: Add a text input
 function addTextInput() {
     const elTxtInput = document.querySelector('[name="txt-input"]')
     const lineTxt = elTxtInput.value
-    if(!lineTxt) return
     const char = lineTxt.charAt(lineTxt.length - 1)
-    console.log('char:', char)
     setLineTxt(char)
 
     renderMeme()
@@ -28,7 +32,20 @@ function addTextInput() {
 function renderMeme() {
     const meme = getMeme()
     const memeLine = meme.lines[0]
-    drawText(memeLine, 150, 20)
+    drawText(memeLine, gPos.x, gPos.y)
+}
+
+function drawText(memeLine, x, y) {
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = memeLine.color
+    gCtx.fillStyle = 'white'
+    gCtx.font = `${memeLine.size}px Impact`
+    gCtx.textAlign = 'center'
+    gCtx.textBaseline = 'middle'
+    gPos.x += 15
+    
+    gCtx.fillText(memeLine.txt, x, y)
+    gCtx.strokeText(memeLine.txt, x, y)
 }
 
 function drawImg(imgUrl) {
@@ -40,16 +57,6 @@ function drawImg(imgUrl) {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     }
-}
-
-function drawText(memeLine, x = 150, y = 20) {
-    gCtx.lineWidth = 2
-    gCtx.fillStyle = memeLine.color
-    gCtx.font = `${memeLine.size}px sans-serif`
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
-
-    gCtx.fillText(memeLine.txt, x, y)
 }
 
 function _resizeCanvas() {

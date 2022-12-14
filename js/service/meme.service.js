@@ -25,9 +25,7 @@ function getMeme() {
 
 // TODO: update the gMeme using the function setLineTxt()
 function setLineTxt(char) {
-    console.log('lineTxt:', char)
     gMeme.lines[0].txt = char
-    console.log('gMeme:', char)
 }
 
 function setImg(imgId) {
