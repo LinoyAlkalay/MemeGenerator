@@ -6,10 +6,10 @@ let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [{
-        txt: 'I sometimes eat Falafel',
-        size: 20,
+        txt: '',
+        size: 30,
         align: 'left',
-        color: 'red'
+        color: 'black'
     }]
 }
 
@@ -24,12 +24,13 @@ function getMeme() {
 }
 
 // TODO: update the gMeme using the function setLineTxt()
-function setLineTxt() {
-
+function setLineTxt(char) {
+    console.log('lineTxt:', char)
+    gMeme.lines[0].txt = char
+    console.log('gMeme:', char)
 }
 
 function setImg(imgId) {
-    // TODO: something with gImgs - maybe find method
     const img = gImgs.find(img => +imgId === img.id)
     return img.url
 }

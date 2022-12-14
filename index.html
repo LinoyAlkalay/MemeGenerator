@@ -9,36 +9,41 @@
     <title>Meme Generator</title>
 </head>
 
-<body onload="onInit()">
-
-    <header class="main-header">
-        <div class="logo">memegen</div>
-        <ul>
-            <li><a href="">Gallery</a></li>
-            <li><a href="">About</a></li>
-        </ul>
+<body class="main-layout" onload="onInit()">
+    <header class="main-header flex align-center space-between full main-layout">
+        <nav class="main-nav flex align-center space-between width-full">
+            <div class="logo">memegen</div>
+            <ul class="clean-list flex">
+                <li><a href="">Gallery</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="meme-editor">
-        Meme-Editor
-        <div class="canvas-container">
-            <canvas id="meme-canvas" height="300" width="300"></canvas>
+    <section class="meme-editor flex align-center space-between full">
+        <div class="main-layout flex width-full">
+            <div class="canvas-container">
+                <canvas id="meme-canvas"></canvas>
+            </div>
+            <div class="control-box">
+                <input type="text" name="txt-input" placeholder="Enter something funny">
+            </div>
         </div>
-        <div class="control-box">I'm Control Box</div>
     </section>
 
-    <section class="main-gallery">
-        <section class="search-area">
-            <input type="search" id="gsearch" name="gsearch" placeholder="Enter search keyword">
-            <input type="submit">
-            <div class="keyword">Keywords</div>
-        </section>
-        <div class="grid-container">Image-Gallery</div>
+    <section class="main-gallery full main-layout">
+        <div class="gallery-container width-full">
+            <section class="search-area flex align-center space-between">
+                <input type="search" id="gsearch" name="gsearch" placeholder="Enter search keyword">
+                <div class="keyword">Keywords</div>
+            </section>
+            <div class="grid-container"></div>
+        </div>
     </section>
 
-    <footer class="main-footer">
+    <footer class="main-footer flex align-center full">
         <div class="logo">memegen</div>
-        <small>all rights reserved 2019</small>
+        <small>all rights reserved 2022</small>
     </footer>
 
     <script src="js/service/util.service.js"></script>

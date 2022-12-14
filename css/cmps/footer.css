@@ -1,0 +1,15 @@
+.main-footer {
+    background-color: var(--clr0);
+    color: var(--clr-basic);
+    flex-direction: column;
+}
+
+.main-footer .logo {
+    margin-top: 75px;
+    margin-bottom: 15px;
+}
+
+.main-footer small {
+    margin-bottom: 75px;
+    font-family: Montserrat-thin;
+}
