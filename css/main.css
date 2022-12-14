@@ -1,0 +1,69 @@
+:root {
+    --clr-grid: #F2F2F2;
+    --clr-haeder: #412F59;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0
+}
+
+.main-header {
+    background-color: var(--clr-haeder);
+}
+
+.main-header a {
+    text-decoration: none;
+    height: 60px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(360px, 1fr));
+    gap: 30px;
+    padding: 30px;
+    padding-inline: 60px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100vw;
+    background-color: var(--clr-grid);
+}
+
+.image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.meme-editor {
+    padding: 30px;
+    padding-inline: 60px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100vw;
+    background-color: var(--clr-grid);
+}
+
+.canvas-container {
+    display: flex;
+    background-color: black;
+}
+
+canvas {
+    background-color: white;
+}
+
+.control-box {
+    grid-area: box;
+    background-color: red;
+    width: 300px;
+    height: 300px;
+}
+
+.main-footer {
+    background-color: var(--clr-haeder);
+}

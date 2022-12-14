@@ -1,7 +1,7 @@
 'use strict'
 
-let gKeywordSearchCountMap = {'funny': 12,'cat': 16, 'baby': 2}
-let gImgs = [{id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat']}]
+let gImgs
+let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
@@ -13,6 +13,12 @@ let gMeme = {
     }]
 }
 
+_createImgs()
+
+function getImgs() {
+    return gImgs
+}
+
 function getMeme() {
     return gMeme
 }
@@ -22,6 +28,22 @@ function setLineTxt() {
 
 }
 
-function setImg() {
+function setImg(imgId) {
     // TODO: something with gImgs - maybe find method
+    const img = gImgs.find(img => +imgId === img.id)
+    return img.url
+}
+
+function _createImgs() {
+    const imgs = []
+    for (let i = 1; i <= 18; i++) {
+        let img = {
+            id: i,
+            url: `img/${i}.jpg`,
+            keywords: ['funny', 'cute']
+        }
+        imgs.push(img)
+    }
+    gImgs = imgs
+    console.log('gImgs:', gImgs)
 }
