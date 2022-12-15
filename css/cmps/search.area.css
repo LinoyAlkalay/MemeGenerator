@@ -1,0 +1,31 @@
+.search-area {
+    flex-direction: column;
+}
+
+.search-area input {
+    font-size: 1.25rem;
+    border-radius: 0.6em;
+    border: none;
+    text-align: left;
+}
+
+.input-container {
+    border-bottom: 2px solid var(--clr-font);
+    margin-bottom: 1.875em;
+}
+
+.search-area button {
+    font-size: 1.25rem;
+}
+
+.keyword {
+    margin-bottom: 0.875rem;
+}
+
+@media (min-width: 550px) {
+    .search-area {
+        padding-top: 2em;
+        padding-bottom: 2em;
+        flex-direction: row;
+    }
+}

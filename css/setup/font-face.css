@@ -17,3 +17,60 @@
     font-family: Montserrat-bold;
     src: url("/fonts/Montserrat/Montserrat-Bold.ttf");
 }
+
+@font-face {
+    font-family: Eurofurence;
+    src: url(/fonts/eurofurence/eurof55.ttf);
+}
+
+@font-face {
+    font-family: fa;
+    src: url(/fonts/font-awesome/fa-solid-900.ttf);
+}
+
+.fa:after {
+    font-family: fa;
+    color: var(--clr-font);
+}
+
+.fa.glass:after {
+    content: "\f002";
+}
+
+.fa.up:after {
+    content: "\f062";
+}
+
+.fa.down:after {
+    content: "\f063";
+}
+
+.fa.plus:after {
+    content: "\2b";
+}
+
+.fa.trash-can:after {
+    content: "\f2ed";
+}
+
+.fa.palette:after {
+    content: "\f53f";
+}
+
+.fa.left:after {
+    content: "\f036";
+}
+
+.fa.center:after {
+    content: "\f037";
+}
+
+.fa.right:after {
+    content: "\f038";
+}
+
+.fa.size:after {
+    content: "\f034";
+}
+
+

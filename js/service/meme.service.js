@@ -5,12 +5,8 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
-    lines: [{
-        txt: '',
-        size: 30,
-        align: 'left',
-        color: 'black'
-    }]
+    lines: [{ txt: '', currChar: '', size: 30, align: 'left', color: 'black' },
+            { txt: '', currChar: '', size: 30, align: 'left', color: 'black' }]
 }
 
 _createImgs()
@@ -23,12 +19,25 @@ function getMeme() {
     return gMeme
 }
 
-// TODO: update the gMeme using the function setLineTxt()
-function setLineTxt(char) {
-    gMeme.lines[0].txt = char
+function increaseFont() {
+    gMeme.lines[0].size++
+}
+
+function decreaseFont() {
+    gMeme.lines[0].size--
+}
+
+function setColor(color) {
+    gMeme.lines[0].color = color
+}
+
+function setLineTxt(lineTxt, char) {
+    gMeme.lines[0].txt = lineTxt
+    gMeme.lines[0].currChar = char
 }
 
 function setImg(imgId) {
+    gMeme.selectedImgId = +imgId
     const img = gImgs.find(img => +imgId === img.id)
     return img.url
 }

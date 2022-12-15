@@ -1,9 +1,11 @@
 .main-header {
     background-color: var(--clr0);
     color: var(--clr-basic);
+    margin-bottom: 0.875rem;
 }
 
 .main-header a {
+    font-size: 1.25rem;
     text-decoration: none;
     height: 70px;
     display: inline-block;
@@ -11,8 +13,25 @@
     text-align: center;
     display: flex;
     align-items: center;
+    padding-inline-start: 0.75em;
 }
 
 .main-header a:hover {
-    background-color: var(--clr3);
+    color: var(--clr1);
+}
+
+.main-header a:not(.about):after {
+    padding-inline-start: 0.75em;
+    content: "|";
+}
+
+.logo {
+    font-family: Eurofurence;
+    font-size: 2rem;
+}
+
+@media (min-width: 550px) {
+    .main-header {
+        margin-bottom: 0;
+    }
 }

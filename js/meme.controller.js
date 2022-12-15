@@ -2,14 +2,16 @@
 
 let gElCanvas
 let gCtx
-let gPos = {
-    x: 140,
-    y: 80
-}
+let gPos = [{ x: 0, y: 80 }, { x: 0, y: 280 }]
 
 function initMeme(imgUrl) {
     document.querySelector('.main-gallery').style.display = 'none'
+    document.querySelector('.search-area').style.display = 'none'
     document.querySelector('.meme-editor').style.display = 'flex'
+    gElCanvas = document.getElementById('meme-canvas')
+    gCtx = gElCanvas.getContext('2d')
+    console.log('gCtx:', gCtx)
+    gPos[0].x = gElCanvas.width / 2
     drawImg(imgUrl)
 
     const elTxtInput = document.querySelector('[name="txt-input"]')
@@ -18,39 +20,51 @@ function initMeme(imgUrl) {
     })
 }
 
-// TODO: Add a text input
 function addTextInput() {
     const elTxtInput = document.querySelector('[name="txt-input"]')
     const lineTxt = elTxtInput.value
     const char = lineTxt.charAt(lineTxt.length - 1)
-    setLineTxt(char)
+    setLineTxt(lineTxt, char)
 
     renderMeme()
 }
 
-// TODO: renders a line of text on Img
 function renderMeme() {
     const meme = getMeme()
-    const memeLine = meme.lines[0]
-    drawText(memeLine, gPos.x, gPos.y)
+    drawText(meme)
 }
 
-function drawText(memeLine, x, y) {
+function onSetColor() {
+    const color = document.querySelector('[name="color"]').value
+    setColor(color)
+}
+
+function onIncreaseFont() {
+    increaseFont()
+}
+
+function onDecreaseFont() {
+    decreaseFont()
+}
+
+function drawText(meme) {
+    const {color, size, currChar} = meme.lines[0]
+
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = memeLine.color
+    gCtx.strokeStyle = color
     gCtx.fillStyle = 'white'
-    gCtx.font = `${memeLine.size}px Impact`
+    gCtx.font = `${size}px Impact`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
-    gPos.x += 15
+
+    // const text = gCtx.measureText(memeLine.txt)
+    gPos[0].x += 20 // !need improvment
     
-    gCtx.fillText(memeLine.txt, x, y)
-    gCtx.strokeText(memeLine.txt, x, y)
+    gCtx.fillText(currChar, gPos[0].x, gPos[0].y)
+    gCtx.strokeText(currChar, gPos[0].x, gPos[0].y)
 }
 
 function drawImg(imgUrl) {
-    gElCanvas = document.getElementById('meme-canvas')
-    gCtx = gElCanvas.getContext('2d')
     _resizeCanvas()
     const img = new Image()
     img.src = imgUrl
