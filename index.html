@@ -26,14 +26,16 @@
             <div class="canvas-container">
                 <canvas id="meme-canvas"></canvas>
             </div>
-            <div class="control-box flex">
+            <div class="control-box flex space-between ">
                 <input type="text" name="txt-input" placeholder="Enter something funny">
-                <div class="edit-container">
-                    <button class="fa down" onclick="onToggleLine()"></button>
+                <div class="crudl-container">
+                    <button class="item1 fa down" onclick="onToggleLine()"></button>
                     <button class="fa plus" disabled></button>
                     <button class="fa trash-can" disabled></button>
-                    <button class="fa" onclick="onIncreaseFont()">A+</button>
-                    <button class="fa" onclick="onDecreaseFont()">A-</button>
+                </div>
+                <div class="edit-container">
+                    <button class="fa increase" onclick="onIncreaseFont()">A+</button>
+                    <button class="fa decrease" onclick="onDecreaseFont()">A-</button>
                     <button class="fa left" disabled></button>
                     <button class="fa center" disabled></button>
                     <button class="fa right" disabled></button>
@@ -41,8 +43,8 @@
                     <button class="fa" disabled>A</button>
                     <input type="color" name="color" value="#ffffff" onchange="onSetColor()" />
                     <!-- <button class="fa palette"></button> -->
-                    <!-- <select class="carrousel" name="carrousel" id="" disabled></select> -->
                 </div>
+                <!-- <select class="carrousel" name="carrousel" id="" disabled></select> -->
             </div>
         </div>
     </section>

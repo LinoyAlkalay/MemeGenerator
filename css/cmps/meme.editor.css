@@ -15,7 +15,7 @@
 }
 
 .control-box {
-    height: 300px;
+    height: 400px;
     flex-basis: 48%;
     flex-direction: column;
 }
@@ -35,15 +35,11 @@
     margin-right: auto;
     display: grid;
     grid-template-columns: repeat(5, 3.75rem);
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:
-        "increase   decrease    left    center  right"
-        "font       font        font    stroke  color";
     gap: 1em;
 }
 
 .font {
-    grid-area: font;
+    grid-column: 3 span;
 }
 
 .edit-container input {
@@ -53,4 +49,34 @@
     background-color: #ffffff;
     border-radius: 0.75rem;
     font-size: 1.875rem;
+}
+
+.crudl-container {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.crudl-container button:not(first-child) {
+    margin-inline: .3em;
+}
+
+@media (min-width: 550px) {
+    .main-layout>*:not(.full) {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 760px) {
+    .main-layout>*:not(.full) {
+        max-width: 750px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main-layout>*:not(.full) {
+        max-width: 1100px;
+    }
 }

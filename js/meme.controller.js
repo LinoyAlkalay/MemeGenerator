@@ -57,11 +57,12 @@ function drawText() {
 
 function onToggleLine() {
     const meme = getMeme()
-    if(!meme.selectedLineIdx) {
-        meme.selectedLineIdx = 1
-    } else {
-        meme.selectedLineIdx = 0
-    }
+    const elButton = document.querySelector('.crudl-container button')
+    if(!meme.selectedLineIdx) meme.selectedLineIdx = 1
+    else meme.selectedLineIdx = 0
+    
+    elButton.classList.toggle('up')
+    elButton.classList.toggle('down')
 }
 
 function onSetColor() {
