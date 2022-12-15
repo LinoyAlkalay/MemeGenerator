@@ -37,6 +37,10 @@
     content: "\f002";
 }
 
+.fa.arrows::after {
+    content: "\e099";
+}
+
 .fa.up:after {
     content: "\f062";
 }

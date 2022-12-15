@@ -21,20 +21,17 @@
         </nav>
     </header>
 
-    <section class="meme-editor flex align-center space-between full">
+    <section class="meme-editor flex align-center space-between full main-layout">
         <div class="main-layout flex width-full">
             <div class="canvas-container">
                 <canvas id="meme-canvas"></canvas>
             </div>
             <div class="control-box flex">
                 <input type="text" name="txt-input" placeholder="Enter something funny">
-                <div class="crud-btns-container">
-                    <button class="fa down" disabled></button>
-                    <button class="fa up" disabled></button>
+                <div class="edit-container">
+                    <button class="fa down" onclick="onToggleLine()"></button>
                     <button class="fa plus" disabled></button>
                     <button class="fa trash-can" disabled></button>
-                </div>
-                <div class="edit-container">
                     <button class="fa" onclick="onIncreaseFont()">A+</button>
                     <button class="fa" onclick="onDecreaseFont()">A-</button>
                     <button class="fa left" disabled></button>
@@ -44,6 +41,7 @@
                     <button class="fa" disabled>A</button>
                     <input type="color" name="color" value="#ffffff" onchange="onSetColor()" />
                     <!-- <button class="fa palette"></button> -->
+                    <!-- <select class="carrousel" name="carrousel" id="" disabled></select> -->
                 </div>
             </div>
         </div>

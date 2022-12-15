@@ -11,15 +11,35 @@ function onInit() {
 function renderGallery() {
     const imgs = getImgs()
     let strHTML = imgs.map(img => `
-    <img class="image" data-image="${img.id}" src="img/${img.id}.jpg" onclick="onImgSelect('${img.id}')">
+    <img class="image" src="img/${img.id}.jpg" onclick="onImgSelect('${img.id}')">
     `)
     document.querySelector('.grid-container').innerHTML += strHTML.join('')
 }
 
 // DONE: on img clicked move to the "next" page of meme-edtior
 function onImgSelect(imgId) {
-    const imgUrl = setImg(imgId)
-    initMeme(imgUrl)
+    document.querySelector('.main-gallery').style.display = 'none'
+    document.querySelector('.search-area').style.display = 'none'
+    document.querySelector('.meme-editor').style.display = 'flex'
+    initMeme(imgId)
 }
+
+// *********************************************************************** //
+
+// function renderGallery() {
+//     const imgs = getImgs()
+//     let strHTML = imgs.map(img => `
+//     <img class="image" data-image="${img.id}" src="img/${img.id}.jpg" onclick="onImgSelect('${img.id}')">
+//     `)
+//     document.querySelector('.grid-container').innerHTML += strHTML.join('')
+// }
+
+// function onImgSelect(imgId) {
+//     document.querySelector('.main-gallery').style.display = 'none'
+//     document.querySelector('.search-area').style.display = 'none'
+//     document.querySelector('.meme-editor').style.display = 'flex'
+//     const imgUrl = setImg(imgId)
+//     initMeme(imgUrl)
+// }
 
 

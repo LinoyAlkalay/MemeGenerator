@@ -5,8 +5,8 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
-    lines: [{ txt: '', currChar: '', size: 30, align: 'left', color: 'black' },
-            { txt: '', currChar: '', size: 30, align: 'left', color: 'black' }]
+    lines: [{ txt: '', size: 30, align: 'left', color: 'black', x: 150, y: 37.5 },
+            { txt: '', size: 20, align: 'left', color: 'red', x: 150, y: 112.5 }]
 }
 
 _createImgs()
@@ -20,20 +20,23 @@ function getMeme() {
 }
 
 function increaseFont() {
-    gMeme.lines[0].size++
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].size++
 }
 
 function decreaseFont() {
-    gMeme.lines[0].size--
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].size--
 }
 
 function setColor(color) {
-    gMeme.lines[0].color = color
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].color = color
 }
 
-function setLineTxt(lineTxt, char) {
-    gMeme.lines[0].txt = lineTxt
-    gMeme.lines[0].currChar = char
+function setLineTxt(lineTxt) {
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].txt = lineTxt 
 }
 
 function setImg(imgId) {
@@ -55,3 +58,4 @@ function _createImgs() {
     gImgs = imgs
     console.log('gImgs:', gImgs)
 }
+

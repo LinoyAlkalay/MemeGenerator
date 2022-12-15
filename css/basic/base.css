@@ -25,7 +25,11 @@ h6 {
 button {
     cursor: pointer;
     border: none;
-    background-color: transparent;
+    height: 3.75rem;
+    width: 3.75rem;
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    font-size: 1.875rem;
 }
 
 img {
