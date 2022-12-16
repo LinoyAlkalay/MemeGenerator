@@ -20,12 +20,12 @@
 
 @font-face {
     font-family: Eurofurence;
-    src: url(/fonts/eurofurence/eurof55.ttf);
+    src: url("/fonts/eurofurence/eurof55.ttf");
 }
 
 @font-face {
     font-family: fa;
-    src: url(/fonts/font-awesome/fa-solid-900.ttf);
+    src: url("/fonts/font-awesome/fa-solid-900.ttf");
 }
 
 .fa:after {

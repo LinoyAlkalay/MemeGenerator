@@ -5,8 +5,8 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
-    lines: [{ idx: 0, txt: '', size: 30, align: 'left', color: 'black', x: 150, y: 37.5 },
-            { idx: 1, txt: '', size: 20, align: 'left', color: 'red', x: 150, y: 135 }]
+    lines: [{ idx: 0, txt: '', size: 30, align: 'center', colorStroke: 'black', colorFill: 'white', x: 150, y: 37.5 },
+    { idx: 1, txt: '', size: 30, align: 'center', colorStroke: 'black', colorFill: 'white', x: 150, y: 135 }]
 }
 
 _createImgs()
@@ -19,12 +19,33 @@ function getMeme() {
     return gMeme
 }
 
-// function getCurrLine() {
-//     return gMeme.lines[gMeme.selectedLineIdx]
-// }
-
 function selsctedLine() {
     gMeme.selectedLineIdx = !gMeme.selectedLineIdx ? 1 : 0
+}
+
+function addLine() {
+    gMeme.selectedLineIdx = 1 // TODO: need to be ++ with an if that checks max lines 
+}
+
+function deleteMeme() {
+    gMeme.lines.forEach(line => {
+        let { txt, size, align, colorStroke, colorFill } = line
+        txt = ''
+        size = 30
+        align = 'center'
+        colorStroke = 'black'
+        colorFill = 'white'
+    })
+}
+
+function setColorStroke(color) {
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].colorStroke = color
+}
+
+function setColorFill(color) {
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].colorFill = color
 }
 
 function increaseFont() {
@@ -37,10 +58,20 @@ function decreaseFont() {
     gMeme.lines[idx].size--
 }
 
-function setColor(color) {
-    const idx = gMeme.selectedLineIdx
-    gMeme.lines[idx].color = color
-}
+// function alignLeft() {
+//     const idx = gMeme.selectedLineIdx
+//     gMeme.lines[idx].align = 'left'
+// }
+
+// function alignCenter() {
+//     const idx = gMeme.selectedLineIdx
+//     gMeme.lines[idx].align = 'center'
+// }
+
+// function alignRight() {
+//     const idx = gMeme.selectedLineIdx
+//     gMeme.lines[idx].align = 'right'
+// }
 
 function setLineTxt(lineTxt) {
     const idx = gMeme.selectedLineIdx
@@ -64,6 +95,5 @@ function _createImgs() {
         imgs.push(img)
     }
     gImgs = imgs
-    console.log('gImgs:', gImgs)
 }
 
