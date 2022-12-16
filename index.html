@@ -22,15 +22,15 @@
     </header>
 
     <section class="meme-editor flex align-center space-between full main-layout">
-        <div class="main-layout flex width-full">
-            <div class="canvas-container">
+        <div class="main-editor main-layout flex width-full">
+            <div class="canvas-container width-full">
                 <canvas id="meme-canvas"></canvas>
             </div>
-            <div class="control-box flex space-between ">
+            <div class="control-box space-between width-full">
                 <input type="text" name="txt-input" placeholder="Enter something funny">
                 <div class="crudl-container">
-                    <button class="item1 fa down" onclick="onToggleLine()"></button>
-                    <button class="fa plus" disabled></button>
+                    <button class="item1 fa down" onclick="onSwitchLine()"></button>
+                    <button class="fa plus" onclick="onAddLine()"></button>
                     <button class="fa trash-can" disabled></button>
                 </div>
                 <div class="edit-container">
