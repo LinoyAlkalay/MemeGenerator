@@ -29,7 +29,7 @@
             <div class="control-box space-between width-full">
                 <input type="text" name="txt-input" placeholder="Enter something funny">
                 <div class="crudl-container">
-                    <button class="item1 fa down" onclick="onSwitchLine()"></button>
+                    <button class="fa down" onclick="onSwitchLine()"></button>
                     <button class="fa plus" onclick="onAddLine()"></button>
                     <button class="fa trash-can" onclick="onDeleteMeme()"></button>
                 </div>
@@ -40,10 +40,12 @@
                     <button class="fa center" onclick="onAlignCenter()"></button>
                     <button class="fa right" onclick="onAlignRight()"></button>
                     <select class="font" name="" id="" disabled></select>
-                    <!-- <button class="fa" disabled>A</button> -->
-                    <input type="color" name="color-fill" value="#000000" onchange="onSetColorFill()" />
-                    <input type="color" name="color-stroke" value="#ffffff" onchange="onSetColorStroke()" />
-                    <!-- <button class="fa palette"></button> -->
+                    <button class="fill">A
+                        <input type="color" name="color-fill" id="color-fill"  value="#000000" onchange="onSetColorFill()" />
+                    </button>
+                    <button class=" fa palette">
+                        <input type="color" name="color-stroke" id="color-stroke" value="#ffffff" onchange="onSetColorStroke()" />
+                    </button>
                 </div>
                 <!-- <select class="carrousel" name="carrousel" id="" disabled></select> -->
             </div>

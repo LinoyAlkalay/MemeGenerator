@@ -42,10 +42,10 @@
 .edit-container {
     margin-left: auto;
     margin-right: auto;
-
     display: grid;
     grid-template-columns: repeat(5, 3.75rem);
     gap: 1em;
+    position: relative
 }
 
 .font {
@@ -53,12 +53,27 @@
 }
 
 .edit-container input {
-    border: none;
+    position: absolute;
     height: 3.75rem;
     width: 3.75rem;
-    background-color: #ffffff;
-    border-radius: 0.75rem;
-    font-size: 1.875rem;
+    opacity: 0;
+}
+
+.edit-container button {
+    font-family: rounded-bold;
+}
+
+#color-fill {
+    transform: translate(-2em, -.7em);
+}
+
+#color-stroke {
+    transform: translate(-.8em, -.7em);
+}
+
+.fill {
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .crudl-container {
