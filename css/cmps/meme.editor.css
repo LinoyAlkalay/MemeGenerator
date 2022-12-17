@@ -88,6 +88,15 @@
     margin-inline: .3em;
 }
 
+.share {
+    font-size: 1.2rem;
+    background-color: var(--clr0);
+    color: #ffffff;
+    width: 6em;
+    height: 3em;
+    
+}
+
 @media (min-width: 760px) {
     .main-editor {
         flex-direction: row;

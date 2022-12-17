@@ -6,7 +6,7 @@ let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [{ idx: 0, txt: '', size: 30, align: 'center', colorStroke: 'black', colorFill: 'white', x: 150, y: 37.5 },
-    { idx: 1, txt: '', size: 30, align: 'center', colorStroke: 'black', colorFill: 'white', x: 150, y: 135 }]
+            { idx: 1, txt: '', size: 30, align: 'center', colorStroke: 'black', colorFill: 'white', x: 150, y: 135 }]
 }
 
 _createImgs()
@@ -19,8 +19,8 @@ function getMeme() {
     return gMeme
 }
 
-function selsctedLine() {
-    gMeme.selectedLineIdx = !gMeme.selectedLineIdx ? 1 : 0
+function selectedLine() {
+    gMeme.selectedLineIdx = gMeme.selectedLineIdx === 0 ? 1 : 0
 }
 
 function addLine() {
@@ -28,13 +28,13 @@ function addLine() {
 }
 
 function deleteMeme() {
+    gMeme.selectedLineIdx = 0
     gMeme.lines.forEach(line => {
-        let { txt, size, align, colorStroke, colorFill } = line
-        txt = ''
-        size = 30
-        align = 'center'
-        colorStroke = 'black'
-        colorFill = 'white'
+        line.txt = ''
+        line.size = 30
+        line.align = 'center'
+        line.colorStroke = 'black'
+        line.colorFill = 'white'
     })
 }
 

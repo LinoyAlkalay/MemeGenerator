@@ -9,8 +9,7 @@ const SECOND_LINE = 1
 function initMeme(imgId) {
     gElCanvas = document.getElementById('meme-canvas')
     gCtx = gElCanvas.getContext('2d')
-    console.log('gCtx:', gCtx)
-    console.log('gCtx.textAlign:', gCtx.textAlign)
+
     addListeners()
     renderMeme(imgId)
 }
@@ -36,9 +35,14 @@ function renderMeme(imgId) {
 }
 
 function addTextInput() {
-    const elTxtInput = document.querySelector('[name="txt-input"]')
-    const lineTxt = elTxtInput.value
-    setLineTxt(lineTxt)
+    const meme = getMeme()
+
+    if(meme.selectedLineIdx === gCurrLineIdx) {
+        const elTxtInput = document.querySelector('[name="txt-input"]')
+        const lineTxt = elTxtInput.value
+        setLineTxt(lineTxt)
+    } else selectedLine()
+
     drawText()
 }
 
@@ -72,29 +76,27 @@ function drawRect(txt, x, y) {
     gCtx.fillRect(calcX - 10, calcY - 7, width + 20, fontBoundingBoxAscent + 10)
 }
 
-function onSwitchLine() {
+function onSwitchLine() { 
     const elButton = document.querySelector('.crudl-container button')
     elButton.classList.toggle('up')
     elButton.classList.toggle('down')
 
-    clearValue()
-    gCurrLineIdx = !gCurrLineIdx ? SECOND_LINE : FIRST_LINE
-    selsctedLine()
-    resetMeme()
+    gCurrLineIdx = gCurrLineIdx === FIRST_LINE ? SECOND_LINE : FIRST_LINE
+    const meme = getMeme()
+    renderMeme(meme.selectedImgId)
 }
 
-function onAddLine() {
-    clearValue()
-    gCurrLineIdx = !gCurrLineIdx ? SECOND_LINE : FIRST_LINE
+function onAddLine() { 
     addLine()
+    gCurrLineIdx = 1
 }
 
 function onDeleteMeme() {
+    gCurrLineIdx = 0
     clearValue()
     deleteMeme()
     resetMeme()
 }
-
 function onSetColorStroke() {
     const color = document.querySelector('[name="color-stroke"]').value
     setColorStroke(color)
