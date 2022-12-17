@@ -1,18 +1,12 @@
 'use strict'
 
-let gImgs
+
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
-    lines: [{ idx: 0, txt: '', size: 30, align: 'center', colorStroke: 'black', colorFill: 'white', x: 150, y: 37.5 },
-            { idx: 1, txt: '', size: 30, align: 'center', colorStroke: 'black', colorFill: 'white', x: 150, y: 135 }]
-}
-
-_createImgs()
-
-function getImgs() {
-    return gImgs
+    lines: [{ idx: 0, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 250, y: 37.5 },
+            { idx: 1, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 250, y: 135 }]
 }
 
 function getMeme() {
@@ -27,15 +21,17 @@ function addLine() {
     gMeme.selectedLineIdx = 1 // TODO: need to be ++ with an if that checks max lines 
 }
 
-function deleteMeme() {
-    gMeme.selectedLineIdx = 0
-    gMeme.lines.forEach(line => {
-        line.txt = ''
-        line.size = 30
-        line.align = 'center'
-        line.colorStroke = 'black'
-        line.colorFill = 'white'
-    })
+function deleteLine() {
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].txt = ''
+    gMeme.lines[idx].size = 30
+    gMeme.lines[idx].colorStroke = 'black'
+    gMeme.lines[idx].colorFill = 'white'
+}
+
+function setfont(font) {
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].font = font
 }
 
 function setColorStroke(color) {
@@ -58,42 +54,22 @@ function decreaseFont() {
     gMeme.lines[idx].size--
 }
 
-// function alignLeft() {
-//     const idx = gMeme.selectedLineIdx
-//     gMeme.lines[idx].align = 'left'
-// }
+function alignLeft() {
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].x = 100
+}
 
-// function alignCenter() {
-//     const idx = gMeme.selectedLineIdx
-//     gMeme.lines[idx].align = 'center'
-// }
+function alignCenter() {
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].x = 250
+}
 
-// function alignRight() {
-//     const idx = gMeme.selectedLineIdx
-//     gMeme.lines[idx].align = 'right'
-// }
+function alignRight() {
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines[idx].x = 380
+}
 
 function setLineTxt(lineTxt) {
     const idx = gMeme.selectedLineIdx
     gMeme.lines[idx].txt = lineTxt
 }
-
-function setImg(imgId) {
-    gMeme.selectedImgId = +imgId
-    const img = gImgs.find(img => +imgId === img.id)
-    return img.url
-}
-
-function _createImgs() {
-    const imgs = []
-    for (let i = 1; i <= 18; i++) {
-        let img = {
-            id: i,
-            url: `img/${i}.jpg`,
-            keywords: ['funny', 'cute']
-        }
-        imgs.push(img)
-    }
-    gImgs = imgs
-}
-

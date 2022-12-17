@@ -1,27 +1,28 @@
-.main-screen {
-    position: fixed;
-    inset: 0;
-    background-color: #000;
-    background-color: rgb(0 0 0 / 70%);
-    cursor: pointer;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0;
-
-    transition: opacity .6s;
-}
-
-body.menu-open .main-screen {
-    pointer-events: auto;
-    opacity: 1;
-}
-
-.menu-toggle-btn {
-    background-color: transparent;
-    color: var(--clr-base);
-}
 
 @media (max-width: 760px) {
+    .main-screen {
+        position: fixed;
+        inset: 0;
+        background-color: #000;
+        background-color: rgb(0 0 0 / 70%);
+        cursor: pointer;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0;
+    
+        transition: opacity .6s;
+    }
+    
+    body.menu-open .main-screen {
+        pointer-events: auto;
+        opacity: 1;
+    }
+    
+    .menu-toggle-btn {
+        background-color: transparent;
+        color: var(--clr-base);
+    }
+    
     .main-nav ul {
         position: fixed;
         top: 0;

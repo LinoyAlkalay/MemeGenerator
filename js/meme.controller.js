@@ -18,8 +18,7 @@ function addListeners() {
     const elTxtInput = document.querySelector('[name="txt-input"]')
     elTxtInput.addEventListener('keypress', () => {
         setTimeout(() => {
-            const meme = getMeme()
-            renderMeme(meme.selectedImgId)
+            resetMeme()
         }, 0)
     })
 }
@@ -37,7 +36,7 @@ function renderMeme(imgId) {
 function addTextInput() {
     const meme = getMeme()
 
-    if(meme.selectedLineIdx === gCurrLineIdx) {
+    if (meme.selectedLineIdx === gCurrLineIdx) {
         const elTxtInput = document.querySelector('[name="txt-input"]')
         const lineTxt = elTxtInput.value
         setLineTxt(lineTxt)
@@ -50,12 +49,12 @@ function drawText() {
     const meme = getMeme()
 
     meme.lines.forEach(line => {
-        const { idx, txt, size, align, colorStroke, colorFill, x, y } = line
+        const { idx, txt, size, colorStroke, colorFill, font, x, y } = line
         gCtx.lineWidth = 2
         gCtx.strokeStyle = colorStroke
         gCtx.fillStyle = `${colorFill}`
-        gCtx.font = `${size}px Impact`
-        gCtx.textAlign = `${align}`
+        gCtx.font = `${size}px ${font}`
+        gCtx.textAlign = `center`
 
         gCtx.save()
         if (idx === gCurrLineIdx) drawRect(txt, x, y)
@@ -76,7 +75,7 @@ function drawRect(txt, x, y) {
     gCtx.fillRect(calcX - 10, calcY - 7, width + 20, fontBoundingBoxAscent + 10)
 }
 
-function onSwitchLine() { 
+function onSwitchLine() {
     const elButton = document.querySelector('.crudl-container button')
     elButton.classList.toggle('up')
     elButton.classList.toggle('down')
@@ -86,15 +85,20 @@ function onSwitchLine() {
     renderMeme(meme.selectedImgId)
 }
 
-function onAddLine() { 
+function onAddLine() {
     addLine()
     gCurrLineIdx = 1
 }
 
-function onDeleteMeme() {
-    gCurrLineIdx = 0
+function onSetFont() {
+    const font = document.querySelector('.font').value
+    setfont(font)
+    resetMeme()
+}
+
+function onDeleteLine() {
     clearValue()
-    deleteMeme()
+    deleteLine()
     resetMeme()
 }
 function onSetColorStroke() {
@@ -119,20 +123,20 @@ function onDecreaseFont() {
     resetMeme()
 }
 
-// function onAlignLeft() {
-//     alignLeft()
-//     resetMeme()
-// }
+function onAlignLeft() {
+    alignLeft()
+    resetMeme()
+}
 
-// function onAlignCenter() {
-//     alignRight()
-//     resetMeme()
-// }
+function onAlignCenter() {
+    alignCenter()
+    resetMeme()
+}
 
-// function onAlignRight() {
-//     alignCenter()
-//     resetMeme()
-// }
+function onAlignRight() {
+    alignRight()
+    resetMeme()
+}
 
 function clearValue() {
     const elTxtInput = document.querySelector('[name="txt-input"]')
@@ -148,4 +152,26 @@ function _resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     // gElCanvas.height = elContainer.offsetHeight
+}
+
+function onShare(btn) {
+    btn.classList.toggle('active')
+}
+
+function downloadImg(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg') // image/jpeg the default format
+    elLink.href = imgContent
+}
+
+function onShareToFacebook() {
+    const imgDataUrl = gElCanvas.toDataURL('image/jpeg') // Gets the canvas content as an image format
+
+    // A function to be called if request succeeds
+    function onSuccess(uploadedImgUrl) {
+        // Encode the instance of certain characters in the url
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
+    }
+    // Send the image to the server
+    doUploadImg(imgDataUrl, onSuccess)
 }

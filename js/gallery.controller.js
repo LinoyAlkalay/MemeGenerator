@@ -10,10 +10,15 @@ function onInit() {
 // DONE: renderGallery presenting all images
 function renderGallery() {
     const imgs = getImgs()
-    let strHTML = imgs.map(img => `
-    <img class="image" src="img/${img.id}.jpg" onclick="onImgSelect('${img.id}')">
-    `)
-    document.querySelector('.grid-container').innerHTML += strHTML.join('')
+    const elContainer = document.querySelector('.grid-container')
+    if(!imgs.length) {
+        elContainer.innerText = 'no search result!'
+    } else {
+        let strHTML = imgs.map(img => `
+        <img class="image" src="img/${img.id}.jpg" onclick="onImgSelect('${img.id}')">
+        `)
+        elContainer.innerHTML = strHTML.join('')
+    }
 }
 
 // DONE: on img clicked move to the "next" page of meme-edtior
@@ -26,5 +31,16 @@ function onImgSelect(imgId) {
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
+}
+
+function onSearch() {
+    const searchStr = document.querySelector('[name="gsearch"]').value
+    console.log('searchStr:', searchStr)
+    const filterBy = setImgsFilter(searchStr)
+    renderGallery()
+
+    const queryStringParams = `?keyword=${filterBy.keyword}`
+    const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + queryStringParams
+    window.history.pushState({ path: newUrl }, '', newUrl)
 }
 

@@ -34,7 +34,7 @@
                 <div class="crudl-container">
                     <button class="fa down" onclick="onSwitchLine()"></button>
                     <button class="fa plus" onclick="onAddLine()"></button>
-                    <button class="fa trash-can" onclick="onDeleteMeme()"></button>
+                    <button class="fa trash-can" onclick="onDeleteLine()"></button>
                 </div>
                 <div class="edit-container">
                     <button class="fa increase" onclick="onIncreaseFont()">A+</button>
@@ -42,8 +42,10 @@
                     <button class="fa left" onclick="onAlignLeft()"></button>
                     <button class="fa center" onclick="onAlignCenter()"></button>
                     <button class="fa right" onclick="onAlignRight()"></button>
-                    <select class="font" name="" id="" disabled>
-                        <option value=""></option>
+                    <select class="font" onchange="onSetFont()">
+                        <option value="Impact">Impact</option>
+                        <option value="Arial">Arial</option>
+                        <option value="rounded-bold">Rounded</option>
                     </select>
                     <button class="fill">A
                         <input type="color" name="color-fill" id="color-fill" value="#000000"
@@ -55,15 +57,22 @@
                     </button>
                 </div>
                 <!-- <select class="carrousel" name="carrousel" id="" disabled></select> -->
-                <button class="share">Share</button>
+                <button class="share dropdown" onclick="onShare(this)">
+                    Share
+                    <ul class="dropdown-content clean-list">
+                        <li><a href="#" onclick="downloadImg(this)" download="my-meme.jpg">Download</a></li>
+                        <!-- <li><a href="" disabled>Save to your Memes</a></li> -->
+                        <li><a href="#" onclick="onShareToFacebook()">share on facebook</a></li>
+                    </ul>
+                </button>
             </div>
         </div>
     </section>
 
     <section class="search-area flex align-center space-between">
         <div class="input-container">
-            <input type="search" id="gsearch" name="gsearch" placeholder="Enter search keyword">
-            <button class="fa glass"></button>
+            <input type="search" name="gsearch" placeholder="Enter search keyword">
+            <button class="fa glass" onclick="onSearch()"></button>
         </div>
         <div class="keyword">Keywords</div>
     </section>
@@ -78,6 +87,8 @@
     </footer>
 
     <script src="js/service/util.service.js"></script>
+    <script src="js/service/upload.service.js"></script>
+    <script src="js/service/gallery.service.js"></script>
     <script src="js/service/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/gallery.controller.js"></script>

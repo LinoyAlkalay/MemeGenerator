@@ -1,0 +1,23 @@
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--clr1);
+    z-index: 1;
+    border-radius: 0.75rem;
+    transform: translate(-3em, .9em);
+}
+
+.dropdown-content a {
+    color: var(--clr-base);
+    padding: 1em;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--clr0);
+}
+
+.dropdown.active .dropdown-content {
+    display: block;
+}
