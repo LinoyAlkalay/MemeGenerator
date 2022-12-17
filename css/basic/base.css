@@ -30,6 +30,8 @@ button {
     background-color: var(--clr-btn);
     border-radius: 0.75rem;
     font-size: 1.875rem;
+
+    transition: background-color .6s;
 }
 
 img {

@@ -1,16 +1,36 @@
 'use strict'
 
+const STORAGE_KEY = 'memeDB'
 
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
-    lines: [{ idx: 0, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 250, y: 37.5 },
-            { idx: 1, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 250, y: 135 }]
+    lines: [{ idx: 0, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 180, y: 37.5 },
+    { idx: 1, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 180, y: 125 }]
+}
+const gMemes = []
+
+function setPos(width, height) {
+    gMeme.lines[0].x = width / 2
+    gMeme.lines[0].y = height / 4
+
+    gMeme.lines[1].x = width / 2
+    gMeme.lines[1].y = (5 * height) / 6
+}
+
+function createMemes() {
+    gMemes.push(gMeme)
+    _saveMemeToStorage()
 }
 
 function getMeme() {
     return gMeme
+}
+
+function getSaevedMemes() {
+    const memes = loadFromStorage(STORAGE_KEY)
+    return memes
 }
 
 function selectedLine() {
@@ -54,22 +74,32 @@ function decreaseFont() {
     gMeme.lines[idx].size--
 }
 
-function alignLeft() {
+function alignLeft(width) {
     const idx = gMeme.selectedLineIdx
-    gMeme.lines[idx].x = 100
+    gMeme.lines[idx].x = width / 4
 }
 
-function alignCenter() {
+function alignCenter(width) {
     const idx = gMeme.selectedLineIdx
-    gMeme.lines[idx].x = 250
+    gMeme.lines[idx].x = width / 2
 }
 
-function alignRight() {
+function alignRight(width) {
     const idx = gMeme.selectedLineIdx
-    gMeme.lines[idx].x = 380
+    gMeme.lines[idx].x = (3 * width) / 4
 }
 
 function setLineTxt(lineTxt) {
     const idx = gMeme.selectedLineIdx
     gMeme.lines[idx].txt = lineTxt
+}
+
+function setMeme(imgId) {
+    const memes = loadFromStorage(STORAGE_KEY)
+    // more meme -> find
+    gMeme = memes
+}
+
+function _saveMemeToStorage() {
+    saveToStorage(STORAGE_KEY, gMeme)
 }

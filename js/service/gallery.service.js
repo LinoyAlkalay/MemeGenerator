@@ -9,16 +9,13 @@ _setKeyword()
 function getImgs() {
     if (gFilterBy.keyword) {
         const imgs = gImgs.filter(img => {
-
             for (let i = 0; i < img.keywords.length; i++) {
                 const currKey = img.keywords[i]
                 if (currKey === gFilterBy.keyword) return true
             }
-
         })
         return imgs
     }
-
     return gImgs
 }
 

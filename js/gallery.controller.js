@@ -2,6 +2,7 @@
 
 function onInit() {
     document.querySelector('.meme-editor').style.display = 'none'
+    document.querySelector('.saved-memes').style.display = 'none'
     document.querySelector('.main-gallery').style.display = 'block'
     document.querySelector('.search-area').style.display = 'flex'
     renderGallery()
@@ -11,7 +12,7 @@ function onInit() {
 function renderGallery() {
     const imgs = getImgs()
     const elContainer = document.querySelector('.grid-container')
-    if(!imgs.length) {
+    if (!imgs.length) {
         elContainer.innerText = 'no search result!'
     } else {
         let strHTML = imgs.map(img => `
@@ -25,7 +26,12 @@ function renderGallery() {
 function onImgSelect(imgId) {
     document.querySelector('.main-gallery').style.display = 'none'
     document.querySelector('.search-area').style.display = 'none'
+    document.querySelector('.saved-memes').style.display = 'none'
     document.querySelector('.meme-editor').style.display = 'flex'
+    const memes = getSaevedMemes()
+    if(memes.selectedImgId === imgId) {
+        setMeme(imgId)
+    } 
     initMeme(imgId)
 }
 
@@ -43,4 +49,3 @@ function onSearch() {
     const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + queryStringParams
     window.history.pushState({ path: newUrl }, '', newUrl)
 }
-

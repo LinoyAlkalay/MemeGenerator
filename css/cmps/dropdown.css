@@ -12,6 +12,8 @@
     padding: 1em;
     text-decoration: none;
     display: block;
+
+    transition: background-color .6s;
 }
 
 .dropdown-content a:hover {
