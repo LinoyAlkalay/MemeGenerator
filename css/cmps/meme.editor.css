@@ -72,7 +72,7 @@
 }
 
 .fill {
-    color: white;
+    color: var(--clr-btn);
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
@@ -91,7 +91,7 @@
 .share {
     font-size: 1.2rem;
     background-color: var(--clr0);
-    color: #ffffff;
+    color: var(--clr-basic);
     width: 6em;
     height: 3em;
     

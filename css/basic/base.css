@@ -27,7 +27,7 @@ button {
     border: none;
     height: 3.75rem;
     width: 3.75rem;
-    background-color: #ffffff;
+    background-color: var(--clr-btn);
     border-radius: 0.75rem;
     font-size: 1.875rem;
 }

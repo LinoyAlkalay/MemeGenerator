@@ -11,6 +11,8 @@
 
 <body class="main-layout" onload="onInit()">
 
+    <div class="main-screen full" onclick="toggleMenu()"></div>
+
     <header class="main-header flex align-center space-between full main-layout">
         <nav class="main-nav flex align-center space-between width-full">
             <div class="logo">memegen</div>
@@ -19,6 +21,7 @@
                 <li><a class="about" href="">About</a></li>
             </ul>
         </nav>
+        <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
     </header>
 
     <section class="meme-editor flex align-center space-between full main-layout">
@@ -43,10 +46,12 @@
                         <option value=""></option>
                     </select>
                     <button class="fill">A
-                        <input type="color" name="color-fill" id="color-fill"  value="#000000" onchange="onSetColorFill()" />
+                        <input type="color" name="color-fill" id="color-fill" value="#000000"
+                            onchange="onSetColorFill()" />
                     </button>
                     <button class=" fa palette">
-                        <input type="color" name="color-stroke" id="color-stroke" value="#ffffff" onchange="onSetColorStroke()" />
+                        <input type="color" name="color-stroke" id="color-stroke" value="#ffffff"
+                            onchange="onSetColorStroke()" />
                     </button>
                 </div>
                 <!-- <select class="carrousel" name="carrousel" id="" disabled></select> -->

@@ -12,4 +12,5 @@
 @import './cmps/meme.editor.css';
 @import './cmps/search.area.css';
 @import './cmps/main.gallery.css';
+@import './cmps/mobile.only.css';
 @import './cmps/footer.css';
