@@ -5,32 +5,32 @@
 
 @font-face {
     font-family: Montserrat-regular;
-    src: url(./fonts/Montserrat/Montserrat-Regular.ttf);
+    src: url(/fonts/Montserrat/Montserrat-Regular.ttf);
 }
 
 @font-face {
     font-family: Montserrat-medium;
-    src: url(./fonts/Montserrat/Montserrat-Medium.ttf);
+    src: url(/fonts/Montserrat/Montserrat-Medium.ttf);
 }
 
 @font-face {
     font-family: Montserrat-bold;
-    src: url(./fonts/Montserrat/Montserrat-Bold.ttf);
+    src: url(fonts/Montserrat/Montserrat-Bold.ttf);
 }
 
 @font-face {
     font-family: Eurofurence;
-    src: url(./fonts/eurofurence/eurof55.ttf);
+    src: url(../../../fonts/eurofurence/eurof55.ttf);
 }
 
 @font-face {
     font-family: rounded-bold;
-    src: url(./fonts/rounded/MPLUSRounded1c-Bold.ttf);
+    src: url(../../fonts/rounded/MPLUSRounded1c-Bold.ttf);
 }
 
 @font-face {
     font-family: fa;
-    src: url(./fonts/font-awesome/fa-solid-900.ttf);
+    src: url(../fonts/font-awesome/fa-solid-900.ttf);
 }
 
 .fa:after {
