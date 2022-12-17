@@ -1,7 +1,5 @@
 'use strict'
 
-const STORAGE_KEY = 'memeDB'
-
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gMeme = {
     selectedImgId: 5,
@@ -9,7 +7,6 @@ let gMeme = {
     lines: [{ idx: 0, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 180, y: 37.5 },
     { idx: 1, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 180, y: 125 }]
 }
-const gMemes = []
 
 function setPos(width, height) {
     gMeme.lines[0].x = width / 2
@@ -19,18 +16,8 @@ function setPos(width, height) {
     gMeme.lines[1].y = (5 * height) / 6
 }
 
-function createMemes() {
-    gMemes.push(gMeme)
-    _saveMemeToStorage()
-}
-
 function getMeme() {
     return gMeme
-}
-
-function getSaevedMemes() {
-    const memes = loadFromStorage(STORAGE_KEY)
-    return memes
 }
 
 function selectedLine() {
@@ -38,7 +25,7 @@ function selectedLine() {
 }
 
 function addLine() {
-    gMeme.selectedLineIdx = 1 // TODO: need to be ++ with an if that checks max lines 
+    gMeme.selectedLineIdx = 1
 }
 
 function deleteLine() {
@@ -92,14 +79,4 @@ function alignRight(width) {
 function setLineTxt(lineTxt) {
     const idx = gMeme.selectedLineIdx
     gMeme.lines[idx].txt = lineTxt
-}
-
-function setMeme(imgId) {
-    const memes = loadFromStorage(STORAGE_KEY)
-    // more meme -> find
-    gMeme = memes
-}
-
-function _saveMemeToStorage() {
-    saveToStorage(STORAGE_KEY, gMeme)
 }

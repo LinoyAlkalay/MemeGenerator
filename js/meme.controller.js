@@ -174,25 +174,3 @@ function onShareToFacebook() {
     // Send the image to the server
     doUploadImg(imgDataUrl, onSuccess)
 }
-
-function onMemesStorage() {
-    document.querySelector('.main-gallery').style.display = 'none'
-    document.querySelector('.search-area').style.display = 'none'
-    document.querySelector('.meme-editor').style.display = 'none'
-    document.querySelector('.saved-memes').style.display = 'block'
-    const memes = getSaevedMemes()
-    console.log('memes:', memes)
-
-    // let strHTML = memes.map(meme => `
-    //     <img class="image" src="img/${meme.selectedImgId}.jpg" onclick="onImgSelect('${meme.selectedImgId}')">
-    //     `)
-
-    let strHTML = `
-        <img class="image" src="img/${memes.selectedImgId}.jpg" onclick="onImgSelect('${memes.selectedImgId}')">
-        `
-    document.querySelector('.memes-container').innerHTML = strHTML
-}
-
-function onSaveToStorage() {
-    createMemes()
-}

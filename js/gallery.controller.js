@@ -2,7 +2,6 @@
 
 function onInit() {
     document.querySelector('.meme-editor').style.display = 'none'
-    document.querySelector('.saved-memes').style.display = 'none'
     document.querySelector('.main-gallery').style.display = 'block'
     document.querySelector('.search-area').style.display = 'flex'
     renderGallery()
@@ -26,12 +25,7 @@ function renderGallery() {
 function onImgSelect(imgId) {
     document.querySelector('.main-gallery').style.display = 'none'
     document.querySelector('.search-area').style.display = 'none'
-    document.querySelector('.saved-memes').style.display = 'none'
     document.querySelector('.meme-editor').style.display = 'flex'
-    const memes = getSaevedMemes()
-    if(memes.selectedImgId === imgId) {
-        setMeme(imgId)
-    } 
     initMeme(imgId)
 }
 
@@ -41,7 +35,6 @@ function toggleMenu() {
 
 function onSearch() {
     const searchStr = document.querySelector('[name="gsearch"]').value
-    console.log('searchStr:', searchStr)
     const filterBy = setImgsFilter(searchStr)
     renderGallery()
 

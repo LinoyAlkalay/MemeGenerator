@@ -18,16 +18,11 @@
             <div class="logo">memegen</div>
             <ul class="clean-list flex">
                 <li><a href="">Gallery</a></li>
-                <li><a href="#" onclick="onMemesStorage()">Memes</a></li>
                 <li><a class="about" href="">About</a></li>
             </ul>
         </nav>
         <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
     </header>
-
-    <section class="saved-memes full main-layout">
-        <div class="memes-container"></div>
-    </section>
 
     <section class="meme-editor flex align-center space-between full main-layout">
         <div class="main-editor main-layout flex width-full">
@@ -61,12 +56,10 @@
                             onchange="onSetColorStroke()" />
                     </button>
                 </div>
-                <!-- <select class="carrousel" name="carrousel" id="" disabled></select> -->
                 <button class="share dropdown" onclick="onShare(this)">
                     Share
                     <ul class="dropdown-content clean-list">
                         <li><a href="#" onclick="downloadImg(this)" download="my-meme.jpg">Download</a></li>
-                        <li><a href="#" onclick="onSaveToStorage()">Save to your Memes</a></li>
                         <li><a href="#" onclick="onShareToFacebook()">share on facebook</a></li>
                     </ul>
                 </button>
@@ -79,7 +72,6 @@
             <input type="search" name="gsearch" placeholder="Enter search keyword">
             <button class="fa glass" onclick="onSearch()"></button>
         </div>
-        <div class="keyword">Keywords</div>
     </section>
 
     <section class="main-gallery full main-layout">
@@ -91,7 +83,6 @@
         <small>all rights reserved 2022</small>
     </footer>
 
-    <script src="js/service/util.service.js"></script>
     <script src="js/service/storage.service.js"></script>
     <script src="js/service/upload.service.js"></script>
     <script src="js/service/gallery.service.js"></script>
