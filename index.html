@@ -11,7 +11,7 @@
 
 <body class="main-layout" onload="onInit()">
 
-    <div class="main-screen full" onclick="toggleMenu()"></div>
+    <div class="main-screen full" onclick="onToggleMenu()"></div>
 
     <header class="main-header flex align-center space-between full main-layout">
         <nav class="main-nav flex align-center space-between width-full">
@@ -21,7 +21,7 @@
                 <li><a class="about" href="">About</a></li>
             </ul>
         </nav>
-        <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
+        <button class="menu-toggle-btn" onclick="onToggleMenu()">☰</button>
     </header>
 
     <section class="meme-editor flex align-center space-between full main-layout">
@@ -29,12 +29,12 @@
             <div class="canvas-container width-full">
                 <canvas id="meme-canvas"></canvas>
             </div>
-            <div class="control-box space-between width-full">
+            <div class="control-box space-between">
                 <input type="text" name="txt-input" placeholder="Enter something funny">
                 <div class="crudl-container">
-                    <button class="fa down" onclick="onSwitchLine()"></button>
-                    <button class="fa plus" onclick="onAddLine()"></button>
-                    <button class="fa trash-can" onclick="onDeleteLine()"></button>
+                    <button class="fa down" title="Switch line" onclick="onSwitchLine()"></button>
+                    <button class="fa plus" title="Add line" onclick="onAddLine()"></button>
+                    <button class="fa trash-can" title="Delete line" onclick="onDeleteLine()"></button>
                 </div>
                 <div class="edit-container">
                     <button class="fa increase" onclick="onIncreaseFont()">A+</button>
@@ -47,19 +47,19 @@
                         <option value="Arial">Arial</option>
                         <option value="rounded-bold">Rounded</option>
                     </select>
-                    <button class="fill">A
-                        <input type="color" name="color-fill" id="color-fill" value="#000000"
-                            onchange="onSetColorFill()" />
+                    <button class="stroke">A
+                        <input type="color" name="color-stroke" id="color-stroke" value="#000000"
+                        title="Stroke color" onchange="onSetColorStroke()" />
                     </button>
-                    <button class=" fa palette">
-                        <input type="color" name="color-stroke" id="color-stroke" value="#ffffff"
-                            onchange="onSetColorStroke()" />
+                    <button class="fa palette">
+                        <input type="color" name="color-fill" id="color-fill" value="#ffffff"
+                        title="Fill color" onchange="onSetColorFill()"  />
                     </button>
                 </div>
                 <button class="share dropdown" onclick="onShare(this)">
                     Share
                     <ul class="dropdown-content clean-list">
-                        <li><a href="#" onclick="downloadImg(this)" download="my-meme.jpg">Download</a></li>
+                        <li><a href="#" onclick="onDownloadImg(this)" download="my-meme.jpg">Download</a></li>
                         <li><a href="#" onclick="onShareToFacebook()">share on facebook</a></li>
                     </ul>
                 </button>

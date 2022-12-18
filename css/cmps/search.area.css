@@ -5,6 +5,7 @@
 .search-area input {
     font-size: 1.25rem;
     border-radius: 0.6em;
+    padding-right: .5em;
     border: none;
     text-align: left;
 }
@@ -16,10 +17,6 @@
 
 .search-area button {
     font-size: 1.25rem;
-}
-
-.keyword {
-    margin-bottom: 0.875rem;
 }
 
 @media (min-width: 550px) {

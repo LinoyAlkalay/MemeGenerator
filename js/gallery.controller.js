@@ -29,7 +29,7 @@ function onImgSelect(imgId) {
     initMeme(imgId)
 }
 
-function toggleMenu() {
+function onToggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 

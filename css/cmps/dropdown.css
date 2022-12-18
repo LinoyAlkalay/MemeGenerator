@@ -4,7 +4,7 @@
     background-color: var(--clr1);
     z-index: 1;
     border-radius: 0.75rem;
-    transform: translate(-3em, .9em);
+    transform: translate(-2.5em, .9em);
 }
 
 .dropdown-content a {
