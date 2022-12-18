@@ -3,8 +3,6 @@
 let gElCanvas
 let gCtx
 let gCurrLineIdx = 0
-const FIRST_LINE = 0
-const SECOND_LINE = 1
 
 function initMeme(imgId) {
     gElCanvas = document.getElementById('meme-canvas')
@@ -18,7 +16,7 @@ function addListeners() {
     const elTxtInput = document.querySelector('[name="txt-input"]')
     elTxtInput.addEventListener('keypress', () => {
         setTimeout(() => {
-            resetMeme()
+            _resetMeme()
         }, 0)
     })
 }
@@ -36,16 +34,16 @@ function renderMeme(imgId) {
 function addTextInput() {
     const meme = getMeme()
 
-    if (meme.selectedLineIdx === gCurrLineIdx) {
+    if (meme.selectedLineIdx === gCurrLineIdx) { 
         const elTxtInput = document.querySelector('[name="txt-input"]')
         const lineTxt = elTxtInput.value
         setLineTxt(lineTxt)
-    } else selectedLine()
+    } else selectedLine(gCurrLineIdx)
 
-    drawText()
+    _drawText()
 }
 
-function drawText() {
+function _drawText() {
     const meme = getMeme()
 
     meme.lines.forEach(line => {
@@ -57,7 +55,7 @@ function drawText() {
         gCtx.textAlign = `center`
 
         gCtx.save()
-        if (idx === gCurrLineIdx) drawRect(txt, x, y)
+        if (idx === gCurrLineIdx) _drawRect(txt, x, y)
         gCtx.restore()
 
         gCtx.fillText(txt, x, y)
@@ -65,7 +63,7 @@ function drawText() {
     })
 }
 
-function drawRect(txt, x, y) {
+function _drawRect(txt, x, y) {
     if (!txt) return
     gCtx.fillStyle = 'rgba(255,255,255, 0.5)'
     const mesure = gCtx.measureText(txt)
@@ -80,70 +78,73 @@ function onSwitchLine() {
     elButton.classList.toggle('up')
     elButton.classList.toggle('down')
 
-    gCurrLineIdx = gCurrLineIdx === FIRST_LINE ? SECOND_LINE : FIRST_LINE
-    const meme = getMeme()
-    renderMeme(meme.selectedImgId)
+    const linesLength = getLiensLength()
+
+    if(gCurrLineIdx === linesLength - 1) {
+        gCurrLineIdx = 0
+    } else gCurrLineIdx++
+    _resetMeme()
 }
 
 function onAddLine() {
-    addLine()
-    gCurrLineIdx = 1
+    const idx = addLine()
+    gCurrLineIdx = idx
 }
 
 function onSetFont() {
     const font = document.querySelector('.font').value
     setfont(font)
-    resetMeme()
+    _resetMeme()
 }
 
 function onDeleteLine() {
-    clearValue()
+    _clearValue()
     deleteLine()
-    resetMeme()
+    _resetMeme()
 }
 function onSetColorStroke() {
     const color = document.querySelector('[name="color-stroke"]').value
     setColorStroke(color)
-    resetMeme()
+    _resetMeme()
 }
 
 function onSetColorFill() {
     const color = document.querySelector('[name="color-fill"]').value
     setColorFill(color)
-    resetMeme()
+    _resetMeme()
 }
 
 function onIncreaseFont() {
     increaseFont()
-    resetMeme()
+    _resetMeme()
 }
 
 function onDecreaseFont() {
     decreaseFont()
-    resetMeme()
+    _resetMeme()
 }
 
 function onAlignLeft() {
     alignLeft(gElCanvas.width)
-    resetMeme()
+    _resetMeme()
 }
 
 function onAlignCenter() {
     alignCenter(gElCanvas.width)
-    resetMeme()
+    _resetMeme()
 }
 
 function onAlignRight() {
     alignRight(gElCanvas.width)
-    resetMeme()
+    _resetMeme()
 }
 
-function clearValue() {
+function _clearValue() {
     const elTxtInput = document.querySelector('[name="txt-input"]')
     elTxtInput.value = ''
 }
 
-function resetMeme() {
+function _resetMeme() {
     const meme = getMeme()
     renderMeme(meme.selectedImgId)
 }

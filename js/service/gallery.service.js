@@ -1,7 +1,9 @@
 'use strict'
 
 let gImgs
+let gNumOfImg = 18
 let gFilterBy = { keyword: '' }
+// let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 _createImgs()
 _setKeyword()
@@ -27,7 +29,7 @@ function setImg(imgId) {
 
 function _createImgs() {
     const imgs = []
-    for (let i = 1; i <= 18; i++) {
+    for (let i = 1; i <= gNumOfImg; i++) {
         let img = {
             id: i,
             url: `img/${i}.jpg`,

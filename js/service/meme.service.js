@@ -1,31 +1,35 @@
 'use strict'
 
-let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
-    lines: [{ idx: 0, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 180, y: 37.5 },
-    { idx: 1, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 180, y: 125 }]
-}
-
-function setPos(width, height) {
-    gMeme.lines[0].x = width / 2
-    gMeme.lines[0].y = height / 4
-
-    gMeme.lines[1].x = width / 2
-    gMeme.lines[1].y = (5 * height) / 6
+    lines: [{ idx: 0, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 180, y: 37.5 }]
 }
 
 function getMeme() {
     return gMeme
 }
 
-function selectedLine() {
-    gMeme.selectedLineIdx = gMeme.selectedLineIdx === 0 ? 1 : 0
+function selectedLine(currLine) {
+    gMeme.selectedLineIdx = currLine
 }
 
 function addLine() {
-    gMeme.selectedLineIdx = 1
+    let idx = gMeme.lines.length - 1
+    gMeme.selectedLineIdx = idx++
+    createLine(idx)
+    return idx
+}
+
+function createLine(idx) {
+    gMeme.lines.push(
+        { idx: idx, txt: '', size: 30, colorStroke: 'black', colorFill: 'white', font: 'Impact', x: 180, y: 81 }
+    )
+    if (idx === 1) gMeme.lines[idx].y = 125
+}
+
+function getLiensLength() {
+    return gMeme.lines.length
 }
 
 function deleteLine() {
