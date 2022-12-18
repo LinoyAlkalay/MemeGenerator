@@ -99,7 +99,7 @@ function onSetFont() {
 
 function onDeleteLine() {
     _clearValue()
-    deleteLine()
+    deleteLine(gCurrLineIdx)
     _resetMeme()
 }
 function onSetColorStroke() {

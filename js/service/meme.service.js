@@ -32,8 +32,7 @@ function getLiensLength() {
     return gMeme.lines.length
 }
 
-function deleteLine() {
-    const idx = gMeme.selectedLineIdx
+function deleteLine(idx) {
     gMeme.lines[idx].txt = ''
     gMeme.lines[idx].size = 30
     gMeme.lines[idx].colorStroke = 'black'
