@@ -5,7 +5,7 @@
 .search-area input {
     font-size: 1.25rem;
     border-radius: 0.6em;
-    padding-right: .5em;
+    padding: .5em;
     border: none;
     text-align: left;
 }
